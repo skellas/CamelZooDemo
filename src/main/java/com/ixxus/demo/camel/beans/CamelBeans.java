@@ -20,6 +20,10 @@ public class CamelBeans {
     public CreateLionHandler createLionHandler() {
         return new CreateLionHandler();
     }
+    @Bean(name = "handler.CreateCamel")
+    public CreateCamelHandler createCamelHandler() {
+        return new CreateCamelHandler();
+    }
     @Bean(name = "handler.CheckHabitat")
     public CheckHabitatHandler checkHabitatHandler() {
         return new CheckHabitatHandler();

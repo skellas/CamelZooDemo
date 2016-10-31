@@ -1,6 +1,7 @@
 package com.ixxus.demo.camel.routes;
 
 import com.ixxus.demo.entities.Animal;
+import com.ixxus.demo.entities.Camel;
 import com.ixxus.demo.entities.Dog;
 import com.ixxus.demo.entities.Lion;
 import com.ixxus.demo.services.ZooService;
@@ -25,8 +26,10 @@ public class CreateAnimal extends AbstractRouteBuilder {
                 .choice()
                     .when(header(Animal.PARAM_TYPE).isEqualTo(Lion.TYPE))
                         .to(CreateLion.ROUTE_URI)
-                    .when(header(Animal.PARAM_TYPE).isEqualTo(Dog.TYPE))
-                        .to(CreateDog.ROUTE_URI)
+                       .when(header(Animal.PARAM_TYPE).isEqualTo(Dog.TYPE))
+                       .to(CreateDog.ROUTE_URI)
+                       .when(header(Animal.PARAM_TYPE).isEqualTo(Camel.TYPE))
+                       .to(CreateCamel.ROUTE_URI)
                     .otherwise()
                         .log(LoggingLevel.ERROR, String.format("Not sure how to create this animal type: %s", header(Animal.PARAM_TYPE)))
                 .end()

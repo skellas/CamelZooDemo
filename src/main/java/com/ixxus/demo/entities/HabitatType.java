@@ -10,7 +10,8 @@ package com.ixxus.demo.entities;
 public enum HabitatType {
     AQUARIUM("Aquarium"),
     SAFARI("Safari"),
-    SUBURBIA("Suburbia");
+    SUBURBIA("Suburbia"),
+    DESERT("Desert");
 
     private final String value;
 

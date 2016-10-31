@@ -9,7 +9,8 @@ package com.ixxus.demo.entities;
  */
 public enum AnimalType {
     DOG("Dog"),
-    LION("Lion");
+    LION("Lion"),
+    CAMEL("Camel");
 
     private final String value;
 

@@ -2,6 +2,7 @@ package com.ixxus.demo.controllers;
 
 import com.ixxus.demo.camel.routes.CreateAnimal;
 import com.ixxus.demo.entities.Animal;
+import com.ixxus.demo.entities.Camel;
 import com.ixxus.demo.entities.Dog;
 import com.ixxus.demo.entities.Lion;
 import org.apache.camel.Produce;
@@ -51,6 +52,16 @@ public class CreateAnimalsController {
         return createAnimal(headers);
     }
 
+    @RequestMapping(value = "/camel/{name}")
+    public Animal createCamel(@PathVariable final String name) {
+        Objects.requireNonNull(name, "Can't create a Camel without a name.");
+
+        Map<String, Object> headers = new HashMap<String, Object>(2);
+        headers.put(Animal.PARAM_NAME, name);
+        headers.put(Animal.PARAM_TYPE, Camel.TYPE);
+
+        return createAnimal(headers);
+    }
     private Animal createAnimal(final Map<String, Object> headers) {
         Object o = createAnimalProducer.requestBodyAndHeaders(createAnimalProducer.getDefaultEndpoint(), new Object(), headers);
 
